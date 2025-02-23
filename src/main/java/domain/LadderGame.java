@@ -3,10 +3,7 @@ package domain;
 import domain.model.Ladder;
 import domain.model.Ladders;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class LadderGame {
     private final Ladders ladders;
@@ -41,5 +38,31 @@ public class LadderGame {
 
     public Ladders getLadders() {
         return ladders;
+    }
+
+    public Map<Integer, Integer> getLadderResults() {
+        int width = ladders.ladders().get(0).steps().size() + 1;
+        Map<Integer, Integer> results = new HashMap<>();
+        for (int i = 0; i < width; i++) {
+            results.put(i, traverseLadder(i));
+        }
+        return results;
+    }
+
+    private int traverseLadder(int start) {
+        int position = start;
+        for (Ladder ladder : ladders.ladders()) {
+            position = movePosition(position, ladder);
+        }
+        return position;
+    }
+
+    private int movePosition(int position, Ladder ladder) {
+        if (position > 0 && ladder.steps().get(position - 1)) {
+            return position - 1;
+        } else if (position < ladder.steps().size() && ladder.steps().get(position)) {
+            return position + 1;
+        }
+        return position;
     }
 }

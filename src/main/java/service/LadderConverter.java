@@ -5,6 +5,7 @@ import domain.model.Ladders;
 import dto.LadderDTO;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class LadderConverter {
@@ -13,6 +14,6 @@ public class LadderConverter {
         for (Ladder ladder : ladders.ladders()) {
             ladderData.add(new ArrayList<>(ladder.steps()));
         }
-        return new LadderDTO(ladderData);
+        return new LadderDTO(ladderData, new HashMap<>());
     }
 }

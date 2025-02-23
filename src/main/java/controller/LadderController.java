@@ -17,5 +17,6 @@ public class LadderController {
         int width = InputView.getWidth();
         LadderDTO ladderDTO = ladderService.createLadderGame(height, width);
         ResultView.displayLadder(ladderDTO);
+        ResultView.displayResults(ladderDTO);
     }
 }

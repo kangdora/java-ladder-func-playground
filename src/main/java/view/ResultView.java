@@ -23,14 +23,14 @@ public class ResultView {
 
     private static void printStep(Boolean step) {
         if (step) {
-            System.out.println("-----");
+            System.out.print("-----");
             return;
         }
-        System.out.println("     ");
+        System.out.print("     ");
     }
 
     public static void displayResults(LadderDTO ladderDTO) {
-        System.out.println("\n사다리 결과:");
+        System.out.println("사다리 결과:");
         ladderDTO.results().forEach((start, end) ->
                 System.out.println(start + " -> " + end)
         );
